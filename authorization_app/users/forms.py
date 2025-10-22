@@ -13,7 +13,6 @@ class CustomerChangeForm(UserChangeForm):
     """
     Форма для редактирования профиля пользователя.
     """
-
     class Meta:
         model = Customer
         fields = ['email', 'username']
