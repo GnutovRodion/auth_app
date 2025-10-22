@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Список пользователей{% endblock %}
+
+{% block content %}
+<h1>Список пользователей</h1>
+{% if users %}
+    <ul class="list-group">
+        {% for user in users %}
+            <li class="list-group-item">
+                <strong>{{ user.username }}</strong> - {{ user.email }}
+                {% if user.is_superuser %}(Администратор){% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Пользователи не найдены.</p>
+{% endif %}
+{% endblock %}

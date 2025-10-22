@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Изменить Email{% endblock %}
+
+{% block content %}
+<h1>Изменить Email</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Изменить Email</button>
+    <a href="{% url 'profile' %}" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}

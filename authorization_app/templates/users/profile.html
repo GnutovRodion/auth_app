@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Мой Профиль{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h1>Мой Профиль</h1>
+        <p><strong>Имя пользователя:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Дата регистрации:</strong> {{ user.date_joined|date:"d.m.Y" }}</p>
+        {% if user.first_name or user.last_name %}
+            <p><strong>Полное имя:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+        {% endif %}
+    </div>
+    <div class="col-md-4">
+        <h3>Действия</h3>
+        <a href="{% url 'edit_profile' %}" class="btn btn-primary">Редактировать Профиль</a>
+        <a href="{% url 'change_password' %}" class="btn btn-secondary mt-2">Изменить Пароль</a>
+        <a href="{% url 'change_email' %}" class="btn btn-info mt-2">Изменить Email</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Редактировать Профиль{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Редактировать Профиль</h1>
+    <form method="post" enctype="multipart/form-data">  <!-- Добавил enctype для файлов (если в профиле есть фото) -->
+        {% csrf_token %}
+        
+        <!-- Форма пользователя -->
+        <h3>Информация о Пользователе</h3>
+        {{ user_form|crispy }}
+        
+        <!-- Форма профиля -->
+        <h3>Дополнительная Информация Профиля</h3>
+        {{ profile_form|crispy }}
+        
+        <button type="submit" class="btn btn-success">Сохранить Изменения</button>
+        <a href="{% url 'profile' %}" class="btn btn-secondary">Отмена</a>
+    </form>
+</div>
+{% endblock %}

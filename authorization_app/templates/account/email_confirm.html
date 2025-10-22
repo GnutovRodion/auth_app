@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load account %}
+
+{% block title %}Подтверждение email{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Подтверждение адреса электронной почты</h4>
+                </div>
+                <div class="card-body">
+                    {% if confirmation %}
+                        <p class="text-success">
+                            Спасибо за подтверждение! Ваш адрес электронной почты <strong>{{ email_address.email }}</strong> успешно подтверждён.
+                        </p>
+                        <p>Теперь вы можете использовать этот адрес для входа в систему.</p>
+                        <a href="{% url 'account_login' %}" class="btn btn-primary">Войти</a>
+                    {% else %}
+                        <p class="text-warning">
+                            Ссылка для подтверждения недействительна или устарела. Возможно, этот адрес уже подтверждён или срок действия ссылки истёк.
+                        </p>
+                        <p>Попробуйте войти в систему или запросите новую ссылку подтверждения.</p>
+                        <a href="{% url 'account_login' %}" class="btn btn-secondary">Войти</a>
+                        <a href="{% url 'account_email' %}" class="btn btn-link">Управление email</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
